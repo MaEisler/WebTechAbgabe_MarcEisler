@@ -1,0 +1,227 @@
+ @(title: String)(message: String)(loggedIn: Boolean)
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<title>Play Basics Übersicht</title>
+<link href="/assets/stylesheets/bootstrap.css" rel="stylesheet"
+	media="screen">
+
+
+<link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+<link href="/assets/stylesheets/bootstrap-theme.css" rel="stylesheet"
+	media="screen">
+<link href="/assets/stylesheets/bootstrap-theme.min.css"
+	rel="stylesheet" media="screen">
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Mitfahrzentrale</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/assets/html/startapp.html">Home</a></li>
+					<li><a href="/assets/html/uberuns.html">Über uns</a></li>
+					<li><a href="/assets/html/mitfahrgelegenheit.html">Mitfahrgelengeheit</a></li>
+					<li class="active"><a href="/assets/html/regis.html">Mitmachen</a></li>
+					<li><a href="/assets/html/kontakt.html">Kontakt</a></li>
+					@if(!loggedIn){
+					<li class="active"><a href="/loginController/">Login</a></li>
+					}else{
+					<li class="active"><a href="/loginController/logout">Ausloggen</a></li>
+					}
+
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		@if(loggedIn){
+		<div class="container">
+
+			<div class="starter-template">
+				<h1>Bitte hier Registrieren</h1>
+			</div>
+			<dfn>
+				Um Mitmachen zu können in der Mitfahrzentrale müssen sich erst
+				registeren.<br> Alle Felder mit * sind Pflicht <br>
+				 Wenn sie ein Kennzeichenangeben werden sie als Fahrer eingetragen
+				<br><br>
+			</dfn>
+			<div class="row">
+
+				@if(message) {
+				<div class="alert alert-info">@message</div>
+
+				}
+				<form class="form-horizontal" role="form" method="POST" action="/RegestrierungController/abschicken">
+              <div class="form-group">
+    		    <label for="inputName" class="col-lg-2 control-label">Ihr Name*</label>
+			    <div class="col-lg-10">
+			      <input name="username" type="text" class="form-control" id="inputName" placeholder="Benutzername">
+			    </div>
+			  </div>
+              <!--  
+              <div class="form-group">
+    		    <label class="col-lg-2 control-label">Resgistrieren als</label>
+			    <div class="col-lg-10">
+                 <input type="checkbox" name="Status" value="Fahrer"> Fahrer<br>
+			      <input type="checkbox" name="Status" value="Mitfahrer"> Mitfahrer<br>
+			    </div>
+			  </div> -->
+              
+              <div class="form-group">
+        	    <label for="inputKennzeichen" class="col-lg-2 control-label">KFZ-Kennzeichen</label>
+			    <div class="col-lg-10">
+			      <input name="kennzeichen" type="text" class="form-control" id="inputKennzeichen" placeholder="Kennzeichen">
+			    </div>
+			  </div>
+              
+			  <div class="form-group">
+			    <label for="inputEmail1" class="col-lg-2 control-label">Email*</label>
+			    <div class="col-lg-10">
+			      <input name="email" type="email" class="form-control" id="inputEmail1" placeholder="Email">
+			    </div>
+			  </div>
+              
+
+
+              <div class="form-group">
+    		    <label for="adresse2" class="col-lg-2 control-label">Straße und Hausnummer</label>
+			    <div class="col-lg-10">
+			     <input type="text" name="adresse" class="form-control" id="adresse2" placeholder="Adresse">
+			    </div>
+			  </div>
+              
+              <div class="form-group">
+        	    <label for="adressePLZ2" class="col-lg-2 control-label">PLZ</label>
+			    <div class="col-lg-10">
+			     <input type="text" name="adressePLZ" class="form-control" id="adressePLZ2" placeholder="PLZ">
+			    </div>
+			  </div>
+              
+              <div class="form-group">
+                <label for="wohnort2" class="col-lg-2 control-label">Wohnort</label>
+			    <div class="col-lg-10">
+			     <input type="text" name="adresseStadt" class="form-control" id="wohnort2" placeholder="Stadt">
+			    </div>
+			  </div>
+              
+              <div class="form-group">
+			    <label for="inputPassword1" class="col-lg-2 control-label">Passwort*</label>
+			    <div class="col-lg-10">
+			      <input name="password" type="password" class="form-control" id="inputPassword1" placeholder="Password">
+			    </div>
+			  </div>
+              <div class="form-group">
+    		    <label for="inputPassword1" class="col-lg-2 control-label">Passwort Wiederholen*</label>
+			    <div class="col-lg-10">
+			      <input name="passwordWH" type="password" class="form-control" id="inputPassword1" placeholder="Password">
+			    </div>
+			  </div>
+                          <span class="input-group-addon"><p
+        					class="position_links">Geburtsdatum:</p><br><select name="Tag"
+						size="1">
+							<option value='01'>01</option>
+							<option value='02'>02</option>
+							<option value='03'>03</option>
+							<option value='04'>04</option>
+							<option value='01'>05</option>
+							<option value='06'>06</option>
+							<option value='07'>07</option>
+							<option value='08'>08</option>
+							<option value='09'>09</option>
+							<option value='10'>10</option>
+							<option value='11'>11</option>
+							<option value='12'>12</option>
+							<option value='13'>13</option>
+							<option value='14'>14</option>
+							<option value='15'>15</option>
+							<option value='16'>16</option>
+							<option value='17'>17</option>
+							<option value='18'>18</option>
+							<option value='19'>19</option>
+							<option value='20'>20</option>
+							<option value='21'>21</option>
+							<option value='22'>22</option>
+							<option value='23'>23</option>
+							<option value='24'>24</option>
+							<option value='25'>25</option>
+							<option value='26'>26</option>
+							<option value='27'>27</option>
+							<option value='28'>28</option>
+							<option value='29'>29</option>
+							<option value='30'>30</option>
+							<option value='31'>31</option>
+					</select> <select name="Monat" size="1">
+							<option value='01'>01</option>
+							<option value='02'>02</option>
+							<option value='03'>03</option>
+							<option value='04'>04</option>
+							<option value='01'>05</option>
+							<option value='06'>06</option>
+							<option value='07'>07</option>
+							<option value='08'>08</option>
+							<option value='09'>09</option>
+							<option value='10'>10</option>
+							<option value='11'>11</option>
+							<option value='12'>12</option>
+					</select> <select id="AuswahlJahre" name="Jahr" size="1">
+
+					</select> </span><br>
+			 
+			  <div class="form-group">
+			    <div class="col-lg-offset-2 col-lg-10">
+			      <button type="submit" class="btn btn-default">Registrieren</button>
+			    </div>
+			  </div>
+			</form>
+
+			</div>
+
+		</div>
+		}else{
+		<h1>Sie sind bereits registriert</h1>
+		}
+		<!-- /.container -->
+		<script>
+    	(function() {
+			var el = document.getElementById('AuswahlJahre'), dc = document
+					.createDocumentFragment();
+
+			var jetzt = new Date();
+			var jahr = jetzt.getFullYear();
+			var von = jahr - 90;
+			jahr -= 16;
+
+			//Sicherstellung dass jmd. mindestens 16 und höchstens 90 Jahre alt ist.
+			for (var i = jahr; i >= von; i--) {
+				var option = document.createElement('option');
+				option.value = i;
+				option.appendChild(document.createTextNode(i));
+				dc.appendChild(option);
+			}
+			el.appendChild(dc);
+
+		}());
+	</script>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="../javascripts/jquery.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../javascripts/bootstrap.js"></script>
+</body>
+</html>

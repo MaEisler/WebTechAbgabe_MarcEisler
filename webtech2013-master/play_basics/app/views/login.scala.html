@@ -1,0 +1,100 @@
+@(title: String)(message: String)(loggedIn: Boolean)
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<title>Play Basics &Uuml;bersicht</title>
+<link href="/assets/stylesheets/bootstrap.css" rel="stylesheet"
+	media="screen">
+
+
+<link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+<link href="/assets/stylesheets/bootstrap-theme.css" rel="stylesheet"
+	media="screen">
+<link href="/assets/stylesheets/bootstrap-theme.min.css"
+	rel="stylesheet" media="screen">
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Mitfahrzentrale</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/assets/html/startapp.html">Home</a></li>
+					<li><a href="/assets/html/uberuns.html">&Uuml;ber uns</a></li>
+					<li><a href="/assets/html/mitfahrgelegenheit.html">Mitfahrgelengeheit</a></li>
+					<li><a href="/assets/html/regis.html">Mitmachen</a></li>
+					<li><a href="/assets/html/kontakt.html">Kontakt</a></li>
+					@if(!loggedIn){
+					<li class="active"><a href="/loginController/">Login</a></li>
+					}else{
+					<li class="active"><a href="/loginController/logout">Ausloggen</a></li>
+					}
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container">
+		<br> <br> <br> @if(loggedIn == false){
+		<div class="container">
+			<div class="starter-template">
+				<h1>Bitte hier anmelden</h1>
+			</div>
+
+
+
+			<div class="row">
+				@if(message) {
+				<div class="alert alert-info">@message</div>
+				}
+				<form class="form-horizontal" role="form" method="POST"
+					action="/loginController/login">
+					<div class="form-group">
+						<label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+						<div class="col-lg-10">
+							<input name="email" type="email" class="form-control"
+								id="inputEmail1" placeholder="Email">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputPassword1" class="col-lg-2 control-label">Passwort</label>
+						<div class="col-lg-10">
+							<input name="password" type="password" class="form-control"
+								id="inputPassword1" placeholder="Passwort">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-lg-offset-2 col-lg-10">
+							<button type="submit" class="btn btn-default">Login</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+		}else{
+		<div class="container">
+			<div class="starter-template">
+				<h1>Sie sind nun Angemeldet</h1>
+				@if(message) {
+				<div class="alert alert-info">@message</div>
+
+				}
+
+
+			</div>
+		</div>
+
+		}
+</body>
+</html>

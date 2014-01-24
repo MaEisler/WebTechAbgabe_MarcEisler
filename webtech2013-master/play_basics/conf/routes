@@ -1,0 +1,56 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+##################
+# Basic exmaples
+##################
+
+# Home page
+GET     /                                controllers.ExampleController.index
+
+
+# Controller Beispiele
+GET     /example/output                  controllers.ExampleController.output
+GET     /example/counter                 controllers.ExampleController.cookiecounter
+GET     /example/simpletemplate          controllers.ExampleController.simpletemplate
+
+
+# Regestrierung
+GET      /RegestrierungController/                  controllers.RegestrierungController.backToRegis()
+POST     /RegestrierungController/abschicken        controllers.RegestrierungController.abschicken()
+
+#Login
+GET 	/loginController/				 controllers.loginController.backToLogin()
+POST 	/loginController/login			 controllers.loginController.login()
+GET 	/loginController/logout			 controllers.loginController.logout()
+
+# Formulare
+GET      /login                          controllers.Login.showLoginForm()
+POST     /login                          controllers.Login.login3()
+
+#MfgAnlegen
+GET   /mfgAnlegen/						controllers.anlegenController.backToSite()
+POST  /mfgAnlegen/mfgAnlegen			controllers.anlegenController.mfgAnlegen()
+
+#MFGSuchen
+GET /mfgSuchen/							controllers.suchenController.backToSite()
+
+#MfgMeine
+GET /mfgMeine/							controllers.meineController.meineAnzeigen()
+GET /mfgMeine/bestaetigen/:id2						controllers.meineController.bestaetigen(id2:String)
+
+# Mfg Liste anzeigen 
+GET /mfgSuchen/list  controllers.suchenController.list()  
+
+# Mfg anfragen
+GET /sucheController/:id   controllers.suchenController.anfrage(id: String)     
+
+# Mfg Bestätigen
+
+# maps
+GET /maps/map_sample 	controllers.Maps.sample()
+GET /maps/getlocation 	controllers.Maps.getlocation()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

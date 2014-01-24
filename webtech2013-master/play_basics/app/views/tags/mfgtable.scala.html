@@ -1,0 +1,31 @@
+@(items: List[Mfg])
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Start</th>
+			<th>Ziel</th>
+			<th>Datum</th>
+			<th>Wann</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for( i <- items ){
+		<tr>
+			<td>
+			<form class="form-horizontal" role="form" method="GET"
+					action="@routes.suchenController.anfrage(i.mfgid )">
+				<div class="btn-group">
+				    <button >Anfragen</a></button>
+				</div>
+				</form>
+			</td>
+			<td>@i.start</td>
+			<td>@i.ziel</td>
+			<td>@i.datum</td>
+			<td>@i.zeit</td>
+			
+		</tr>
+		}
+	</tbody>
+</table>

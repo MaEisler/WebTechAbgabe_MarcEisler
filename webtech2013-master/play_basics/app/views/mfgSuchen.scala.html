@@ -1,0 +1,68 @@
+@(title: String)(message: String)(loggedIn: Boolean)(mfgs: List[Mfg])
+@import tags._ 
+@import scala.collection.JavaConversions._
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<title>Play Basics &Uuml;bersicht</title>
+<link href="/assets/stylesheets/bootstrap.css" rel="stylesheet"
+	media="screen">
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Mitfahrzentrale</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/assets/html/startapp.html">Home</a></li>
+					<li><a href="/assets/html/uberuns.html">&Uuml;ber uns</a></li>
+					<li class="active"><a
+						href="/assets/html/mitfahrgelegenheit.html">Mitfahrgelengeheit</a></li>
+					<li><a href="/assets/html/regis.html">Mitmachen</a></li>
+					<li><a href="/assets/html/kontakt.html">Kontakt</a></li>
+					@if(!loggedIn){
+					<li class="active"><a href="/loginController/">Login</a></li>
+					}else{
+					<li class="active"><a href="/loginController/logout">Ausloggen</a></li>
+					}
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/mfgSuchen/list">Suchen</a></li>
+					<li><a href="/mfgAnlegen/">Anlegen</a></li>
+					<li><a href="/mfgMeine/">Pers&ouml;nlicher Bereich</a></li>
+
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br> @if(loggedIn){
+		<h1>Suchen!</h1>
+		@if(message) {
+		<div class="alert alert-info">@message</div>
+		}
+		<div class="row">@mfgtable(mfgs)</div>
+
+
+		}else{
+		<h1>Bitte loggen sie sich zuerst ein</h1>
+		}
+</body>
+</html>

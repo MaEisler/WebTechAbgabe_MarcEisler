@@ -1,0 +1,28 @@
+@(items: List[Mfg])
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			
+			<th>Start</th>
+			<th>Ziel</th>
+			<th>Datum</th>
+			<th>Wann</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for( i <- items ){
+		
+		<tr>
+			<td>
+			
+			</td>
+			<td>@i.start</td>
+			<td>@i.ziel</td>
+			<td>@i.datum</td>
+			<td>@i.zeit</td>
+			
+		</tr>
+		}
+	</tbody>
+</table>

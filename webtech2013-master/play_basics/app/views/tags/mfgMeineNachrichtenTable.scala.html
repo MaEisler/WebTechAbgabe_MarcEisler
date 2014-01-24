@@ -1,0 +1,43 @@
+@(items: List[Nachricht])
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Art</th>
+			<th>von</th>
+			<th>Text</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@for( i <- items ){ 
+		@if(i.art=="Anfrage"){
+		<tr>
+			<td><form class="form-horizontal" role="form" method="GET"
+					action="@routes.meineController.bestaetigen(i.nachrichtid )">
+				<div class="btn-group">
+				    <button >Best&auml;tigen</a></button>
+				</div>
+				</form></td>
+			<td>@i.art</td>
+			<td>@i.von</td>
+			<td>Sie haben eine Anfrage erhalten um bei ihnen Mitzufahren.</td>
+
+
+		</tr>
+		}else{
+		
+		<tr>
+			<td></td>
+			<td>@i.art</td>
+			<td>@i.von</td>
+			<td>Ihre Anfrage wurde best&auml;tigt.</td>
+
+
+		</tr>
+		
+		
+		}
+		}
+	</tbody>
+</table>
